@@ -1,0 +1,13 @@
+# This will implement a key rotation with AWS KMS 
+
+# List current access keys 
+aws iam list-access-keys | grep AccessKeyId  >> kvp.txt 
+
+# Verify when the key was last used 
+aws iam get-access-key-last-used --access-key-id <value>  
+
+# Enable key roation for your key
+aws kms enable-key-rotation --key-id <value>
+
+# Verify key status 
+# aws kms get-key-rotation-status --key-id <value>
